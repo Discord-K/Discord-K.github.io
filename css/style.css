@@ -11,16 +11,18 @@ body{
 
 /*滚动条样式*/
 body::-webkit-scrollbar{
-    width: 8px;
+    width: 12px;
 }
 body::-webkit-scrollbar-thumb{
     border-radius: 10px;
     background-color: #d75464;
 }
 body::-webkit-scrollbar-track{
-    background-color: #556e99;
+    width: 10px;
+    border-radius: 10px;
+    background-color: #bacbdf;
     /*background-color: #4b6e98;*/
-    border: #fffefa 1px solid;
+    /*border: #fffefa 1px solid;*/
 }
 
 .header{
@@ -149,6 +151,14 @@ img{
 .twi-column55>*{
     flex: 1;
     width: 50%;
+}
+
+.twi-column19>:first-child{
+    flex: 1;
+}
+
+.twi-column19>:last-child{
+    flex: 9;
 }
 
 .twi-column91>:first-child{
@@ -446,7 +456,7 @@ td>*{
 }
 
 .anchor{
-    height: 40px;
+    height: 10px;
 }
 
 /*数据强调*/

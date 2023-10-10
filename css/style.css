@@ -148,6 +148,14 @@ img{
     width: 50%;
 }
 
+.twi-column91>:first-child{
+    flex: 9;
+}
+
+.twi-column91>:last-child{
+    flex: 1;
+}
+
 .twi-column28>:first-child{
     flex: 2.5;
 }
@@ -314,6 +322,7 @@ td>*{
     padding: 0 48px;
     border-right: 2px #2b3770 solid;
     flex: 1;
+    margin-bottom: 72px;
 }
 
 .about-us>div:last-child{
@@ -322,7 +331,7 @@ td>*{
 
 .copyright{
     font-size: 16px;
-    line-height: 20px;
+    line-height: 32px;
     border-top: 1px #333333 solid;
     text-align: center;
     margin-top: 32px;
@@ -435,4 +444,14 @@ td>*{
 
 .anchor{
     height: 40px;
+}
+
+/*数据强调*/
+.data{
+    font-weight: 900;
+    color: #4b6e98;
+}
+
+.highlight{
+
 }

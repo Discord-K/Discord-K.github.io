@@ -389,14 +389,8 @@ td>*{
     height: 518px;
 }
 
-.wordcloud-description{
-    height: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-}
-.wordcloud-description>p{
-    margin: 120px 0;
+.wordcloud-description p{
+    margin: 54px 0;
 }
 
 .market{

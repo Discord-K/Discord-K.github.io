@@ -50,19 +50,20 @@ window.onload = function (){
     }
 }
 
-window.onscroll = function (){
-    const top = [];
-    for (let i = 0; i < 6; i++) {
-        const anchor = document.getElementById('anchor' + i).getBoundingClientRect();
-        top.push(anchor.top);
-    }
-    const order = top.filter(d=>(d<10)).length;
-    const anchor = document.getElementById('nav' + order);
-    for (let i = 1; i < 7; i++) {
-        const nav = document.getElementById('nav' + i);
-        nav.style.borderBottom = '0';
-        nav.style.fontWeight = '400';
-    }
-    anchor.style.borderBottom = '#243b6d 4px solid';
-    anchor.style.fontWeight = '900';
-}
+// 导航栏动效
+// window.onscroll = function (){
+//     const top = [];
+//     for (let i = 0; i < 6; i++) {
+//         const anchor = document.getElementById('anchor' + i).getBoundingClientRect();
+//         top.push(anchor.top);
+//     }
+//     const order = top.filter(d=>(d<10)).length;
+//     const anchor = document.getElementById('nav' + order);
+//     for (let i = 1; i < 7; i++) {
+//         const nav = document.getElementById('nav' + i);
+//         nav.style.borderBottom = '0';
+//         nav.style.fontWeight = '400';
+//     }
+//     anchor.style.borderBottom = '#243b6d 4px solid';
+//     anchor.style.fontWeight = '900';
+// }

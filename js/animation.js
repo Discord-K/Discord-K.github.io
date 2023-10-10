@@ -1,6 +1,6 @@
 window.onload = function (){
-    const body = document.body;
-    if (window.scrollY === 0)body.style.overflow = 'hidden';
+    // const body = document.body;
+    // if (window.scrollY === 0)body.style.overflow = 'hidden';
     const cover = document.getElementById('cover');
     cover.style.opacity = '1';
     const headline = document.getElementById('headline');
@@ -22,8 +22,8 @@ window.onload = function (){
             top = top + 25;
             headline.style.top = `${top}%`;
         }
-        if(cover.style.opacity <= 0.5) body.style.overflow = 'auto';
-        if(cover.style.opacity > 0.75) body.style.overflow = 'hidden';
+        // if(cover.style.opacity <= 0.5) body.style.overflow = 'auto';
+        // if(cover.style.opacity > 0.75) body.style.overflow = 'hidden';
     }
 
     // 滑动图层动效

@@ -356,7 +356,7 @@ td>*{
     background-position: center center;
     overflow: auto;
     margin: 0;
-    /*position: sticky;*/
+    position: sticky;
     top: 0;
 }
 
@@ -381,14 +381,14 @@ td>*{
     height: 900px;
 }
 .co-occurrence>.blank{
-    height: 870px;
+    height: 900px;
 }
 
 .demand{
-    height: 450px;
+    height: 500px;
 }
 .demand>.blank{
-    height: 518px;
+    height: 500px;
 }
 
 .wordcloud-description p{
@@ -399,16 +399,16 @@ td>*{
     height: 800px;
 }
 .market>.blank{
-    height: 660px;
+    height: 800px;
 }
 
 .skill{
     height: 850px;
 }
+/*.skill>.blank{*/
+/*    height: 600px;*/
+/*}*/
 .skill>.blank{
-    height: 600px;
-}
-.skill>.blank:last-child{
     height: 850px;
 }
 

@@ -26,13 +26,15 @@ window.onload = function (){
     //     // if(cover.style.opacity > 0.75) body.style.overflow = 'hidden';
     // }
 
+
     // 滑动图层动效
     const slides = document.getElementsByClassName('slide');
-    // slides.forEach()console.log(slide)
     for (let i = 0; i < slides.length; i++) {
         const slide = slides[i];
+        // slide.style.height = screenHeight + 'px';
         const height = slide.clientHeight + 100;
         slide.onscroll = function () {
+            // 更换背景
             const className = slide.className.split(' ')[1];
             const children = (slide.children.length - 1) / 2;
             if ( i === 1 ) {
@@ -46,9 +48,36 @@ window.onload = function (){
                 const imgName = `url('img/${className}${j + 1}.png')`;
                 if (slide.scrollTop > j * 0.8 * height && slide.scrollTop <= (j + 1) * 1.2 * height) slide.style.backgroundImage = imgName;
             }
+
+            //  内部滚完恢复
+            // 判断条件：最后一个空白的顶部 = slide顶部
+            const childrenList = slide.children;
+            const lastBlank = childrenList[childrenList.length - 1];
+            const blankTop = lastBlank.getBoundingClientRect().top;
+            const top = slide.getBoundingClientRect().top;
+            if (blankTop <= top) {
+                slide.style.setProperty('position', 'relative');
+            }
         }
     }
 }
+
+window.onscroll = function (){
+//     屏幕顶端超过slide
+    const slides = document.getElementsByClassName('slide');
+    const top = window.scrollY;
+    for (let i = 0; i < slides.length; i++) {
+        const slide = slides[i];
+        const slideTop = slide.getBoundingClientRect().top;
+        if (slideTop>0){
+            console.log("ok", top, slideTop)
+            slide.style.setProperty('position', 'sticky');
+        }else
+            console.log("x", top, slideTop, slide.className)
+    }
+
+}
+
 
 // 导航栏动效
 // window.onscroll = function (){

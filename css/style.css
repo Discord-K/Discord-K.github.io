@@ -36,19 +36,26 @@ body::-webkit-scrollbar-track{
 }
 
 h1{
-    text-align: center;
+    text-align: left;
     color: #fffefa;
     font-weight: 900;
-    line-height: 72px;
+    line-height: 80px;
     font-size: 60px;
 }
 
+#cover{
+    opacity: 40%;
+    z-index: -1;
+}
+
 #headline{
+    width: 95%;
     margin: 0 auto;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1;
 }
 
 .container{

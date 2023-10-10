@@ -1,30 +1,30 @@
 window.onload = function (){
     // const body = document.body;
     // if (window.scrollY === 0)body.style.overflow = 'hidden';
-    const cover = document.getElementById('cover');
-    cover.style.opacity = '1';
-    const headline = document.getElementById('headline');
-    headline.style.opacity = '0';
-    let top = 100;
+    // const cover = document.getElementById('cover');
+    // cover.style.opacity = '1';
+    // const headline = document.getElementById('headline');
+    // headline.style.opacity = '0';
+    // let top = 100;
     // 首图标题浮现动效
-    cover.onwheel = function (event){
-        const deltaY = event.deltaY;
-        const opacity = cover.style.opacity;
-
-        if(deltaY > 0 && opacity > 0.5){
-            cover.style.opacity = `${opacity - 0.25}`;
-            headline.style.opacity = `${parseFloat(headline.style.opacity) + 0.5}`;
-            top = top - 25;
-            headline.style.top = `${top}%`;
-        }else if(deltaY < 0 && opacity < 1 && opacity > 0){
-            cover.style.opacity = `${parseFloat(opacity)+0.25}`;
-            headline.style.opacity = `${parseFloat(headline.style.opacity) - 0.5}`;
-            top = top + 25;
-            headline.style.top = `${top}%`;
-        }
-        // if(cover.style.opacity <= 0.5) body.style.overflow = 'auto';
-        // if(cover.style.opacity > 0.75) body.style.overflow = 'hidden';
-    }
+    // cover.onwheel = function (event){
+    //     const deltaY = event.deltaY;
+    //     const opacity = cover.style.opacity;
+    //
+    //     if(deltaY > 0 && opacity > 0.5){
+    //         cover.style.opacity = `${opacity - 0.25}`;
+    //         headline.style.opacity = `${parseFloat(headline.style.opacity) + 0.5}`;
+    //         top = top - 25;
+    //         headline.style.top = `${top}%`;
+    //     }else if(deltaY < 0 && opacity < 1 && opacity > 0){
+    //         cover.style.opacity = `${parseFloat(opacity)+0.25}`;
+    //         headline.style.opacity = `${parseFloat(headline.style.opacity) - 0.5}`;
+    //         top = top + 25;
+    //         headline.style.top = `${top}%`;
+    //     }
+    //     // if(cover.style.opacity <= 0.5) body.style.overflow = 'auto';
+    //     // if(cover.style.opacity > 0.75) body.style.overflow = 'hidden';
+    // }
 
     // 滑动图层动效
     const slides = document.getElementsByClassName('slide');

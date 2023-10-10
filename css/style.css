@@ -356,7 +356,7 @@ td>*{
     background-position: center center;
     overflow: auto;
     margin: 0;
-    position: sticky;
+    /*position: sticky;*/
     top: 0;
 }
 
@@ -466,4 +466,5 @@ td>*{
 .highlight{
     background-color: #9ad3f1;
     color: #000;
+    line-height: 16px;
 }

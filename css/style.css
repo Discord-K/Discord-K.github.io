@@ -76,10 +76,13 @@ h1{
     margin: 32px 0;
 }
 
-.drop-cap::first-letter {
+.drop-cap::first-letter{
     font-size: 44px;
     margin: 10px 10px 0 0;
     float: left;
+}
+.spot::first-letter{
+    margin-left: -20px;
 }
 
 img{
@@ -338,8 +341,8 @@ td>*{
 }
 
 .user-name{
-    color: #6eacd3;
-    text-decoration: #6eacd3 underline;
+    /*color: #6eacd3;*/
+    /*text-decoration: #6eacd3 underline;*/
 }
 
 .slide{
@@ -449,7 +452,15 @@ td>*{
 /*数据强调*/
 .data{
     font-weight: 900;
+    color: #c04440;
+    font-size: 18px;
+}
+
+/*文字强调*/
+.punchline{
+    font-weight: 900;
     color: #4b6e98;
+    font-size: 18px;
 }
 
 .highlight{

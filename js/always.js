@@ -1,10 +1,16 @@
 // 先加载
-
 document.onreadystatechange = function () {
+    const body = document.body;
+    const loading = document.getElementById('loading');
     if (document.readyState == "complete") {
-        document.body.style.display = "block";
+        setInterval(function (){
+            const opacity = loading.style.opacity;
+            loading.style.opacity = opacity - 0.1 + 'px';
+        }, 100)
+        loading.style.display = 'none';
+        body.style.display = "block";
     } else {
-        document.body.style.display = "none";
+        body.style.display = "none";
     }
 };
 

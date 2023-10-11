@@ -13,6 +13,16 @@
     <script src="js/always.js"></script>
 </head>
 <body>
+    <div id="loading">
+        <div id="loading-logo">
+            <img src="img/logo.svg" alt="">
+        </div>
+        <img src="img/logo.svg" alt="">
+        <div id="progress-track">
+            <div id="progress-bar"></div>
+        </div>
+        <p>0%</p>
+    </div>
     <div class="header">
 <!--        导航栏-->
 <!--        <div class="nav">-->
@@ -59,6 +69,10 @@
                 <span class="data">769640</span>
                 条数据，利用数据挖掘技术和统计分析方法，并结合对多位新闻传播学业界人士的深度访谈进行分析，以期从客观数据和人物故事中揭开新闻传播专业本科生就业现状的面纱。</p>
         </div>
+        <script>
+            document.getElementById('progress-bar').style.width = '20%';
+            document.querySelector('#loading>p').innerHTML = '20%';
+        </script>
         <div class="anchor" id="anchor1"></div>
         <div class="parts">
             <img src="img/banner1.png" alt="">
@@ -101,6 +115,10 @@
             </p>
         </div>
         <div class="anchor" id="anchor2"></div>
+        <script>
+            document.getElementById('progress-bar').style.width = '40%';
+            document.querySelector('#loading>p').innerHTML = '40%';
+        </script>
         <div class="parts">
             <img src="img/banner2.png" alt="">
 <!--            <h2 class="subtitle">Part2新闻传播就业，还需要和其他专业的人“卷”起来</h2>-->
@@ -177,6 +195,10 @@
 
         </div>
         <div class="anchor" id="anchor3"></div>
+        <script>
+            document.getElementById('progress-bar').style.width = '60%';
+            document.querySelector('#loading>p').innerHTML = '60%';
+        </script>
         <div class="parts">
             <img src="img/banner3.png" alt="">
 <!--            <h2 class="subtitle">Part 3 不能只会码字，新闻传播就业越来越需要六边形战士</h2>-->
@@ -283,6 +305,10 @@
                 新闻传播专业的就业市场更青睐具备适应型技能的“通才”，提高自己的知识面和人文底蕴，则能够使得新闻传播专业毕业生有更为长远的业界前景。</p>
         </div>
         <div class="anchor" id="anchor4"></div>
+        <script>
+            document.getElementById('progress-bar').style.width = '80%';
+            document.querySelector('#loading>p').innerHTML = '80%';
+        </script>
         <div class="parts">
             <img src="img/banner4.png" alt="">
 <!--            <h2 class="subtitle">Part 4 教室与职场之间，还有多远的距离？</h2>-->
@@ -375,5 +401,9 @@
     <div class="copyright">
         © Copyright 2023 - All rights reserved.
     </div>
+    <script>
+        document.getElementById('progress-bar').style.width = '100%';
+        document.querySelector('#loading>p').innerHTML = '100%';
+    </script>
 </body>
 </html>

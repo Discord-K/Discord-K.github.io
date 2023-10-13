@@ -522,3 +522,93 @@ td>*{
     width: 70%;
     margin: 0 auto;
 }
+
+.fake{
+    opacity: 0;
+}
+
+/*滑动图层*/
+.scroll {
+    position: relative;
+    width: 60%;
+    margin: 0 auto;
+}
+
+
+article {
+    position: relative;
+    padding: 0;
+    /*max-width: 20rem;*/
+    margin: 0 auto;
+}
+
+figure {
+    position: sticky;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    transform: translate3d(0, 0, 0);
+    /*background-color: #8a8a8a;*/
+    z-index: 0;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.step:last-child {
+    margin-bottom: 0;
+}
+
+.step{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.step p{
+    background-color: rgba(255,255,255,0.8);
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 28px;
+    border-radius: 28px;
+}
+
+#market{
+    background-image: url("../img/market1.png");
+}
+#skill{
+    background-image: url("../img/skill1.png");
+}
+.bg-img{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0;
+    height: 100%;
+    display: none;
+}
+
+.bg-img:first-child{
+    display: block;
+}
+#co-occurrence1{
+    background-image: url("../img/co-occurrence1.png");
+}
+#co-occurrence2{
+    background-image: url("../img/co-occurrence2.png");
+}
+#co-occurrence3{
+    background-image: url("../img/co-occurrence3.png");
+}
+
+#demand1{
+    background-image: url("../img/demand1.png");
+}
+#demand2{
+    background-image: url("../img/demand2.png");
+}
+#demand3{
+    background-image: url("../img/demand3.png");
+}
+#demand4{
+    background-image: url("../img/demand4.png");
+}

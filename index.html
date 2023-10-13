@@ -9,9 +9,9 @@
     <link rel="shortcut icon" href="img/logo.svg">
 <!--    如有logo-->
 <!--    <script src="js/ScrollMagic.min.js"></script>-->
-    <script src="js/animation.js"></script>
-    <script src="js/hover.js"></script>
     <script src="js/always.js"></script>
+    <script src="js/d3.min.js"></script>
+    <script src="js/scrollama.min.js"></script>
 </head>
 <body>
     <div id="loading">
@@ -148,47 +148,186 @@
         </div>
     </div>
 
-    <div class="slide co-occurrence" style="background-image: url('img/co-occurrence1.png');">
-        <div class="blank" style="height: 550px"></div>
-        <div class="text-float">
-            <p class="text-part">数据显示，从专业类别上看，新闻传播类专业的就业市场共向文学、艺术学、管理学等 12 个大类专业， 61 个细分专业的本科毕业生提供工作岗位。当今就业市场对人才的需求，不再只是专注于某一个特定专业，同一个工作岗位不仅需要对口专业，还可能需要相近专业，如汉语言文学、影视、设计等，甚至还需要跨度较大的专业，如计算机、统计学等。</p>
-        </div>
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">从专业数量上看，除了研究对象新闻传播类专业外，人才需求量最大的专业是同为文学大类的中语言文学专业，其次为工学的计算机专业、经济学的经济学专业、管理学的电子商务专业、艺术学的设计学专业和戏剧与影视学专业等。对应到大类专业，岗位需求中提及最多的大类专业是文学(汉语、英语等)、管理学(电商、旅游、物流等)和艺术学(影视、设计、美术、音乐等)等。</p>
-        </div>
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">从专业关系上看，新闻学、传播学、广告学、编辑出版学、网络与新媒体均与语言文学距离较近，意味着绝大部分新闻传播类的就业岗位同样适合于语言文学专业的毕业生，而这一点在业界早已是公认的普遍现象。而新闻传播专业中的广播电视学则与编导、动画、摄影、视觉传达等艺术学专业密切相关。此外，摄影、经济学类、心理学类、体育学类专业在就业市场中与新闻传播专业的关联度较大，计算机专业则与传播学在就业市场中的关联度较大。</p>
-        </div>
-        <div class="blank"></div>
-    </div>
+    <section id="scrollo" class="scroll">
+        <figure id="co-occurrence">
+            <div id="co-occurrence1" class="bg-img"></div>
+            <div id="co-occurrence2" class="bg-img"></div>
+            <div id="co-occurrence3" class="bg-img"></div>
+        </figure>
+
+        <article>
+            <div class="step" data-step="1">
+                <p class="text-part">数据显示，从专业类别上看，新闻传播类专业的就业市场共向文学、艺术学、管理学等 12 个大类专业， 61 个细分专业的本科毕业生提供工作岗位。当今就业市场对人才的需求，不再只是专注于某一个特定专业，同一个工作岗位不仅需要对口专业，还可能需要相近专业，如汉语言文学、影视、设计等，甚至还需要跨度较大的专业，如计算机、统计学等。</p>
+            </div>
+            <div class="step" data-step="2">
+                <p class="text-part">从专业数量上看，除了研究对象新闻传播类专业外，人才需求量最大的专业是同为文学大类的中语言文学专业，其次为工学的计算机专业、经济学的经济学专业、管理学的电子商务专业、艺术学的设计学专业和戏剧与影视学专业等。对应到大类专业，岗位需求中提及最多的大类专业是文学(汉语、英语等)、管理学(电商、旅游、物流等)和艺术学(影视、设计、美术、音乐等)等。</p>
+            </div>
+            <div class="step" data-step="3">
+                <p class="text-part">从专业关系上看，新闻学、传播学、广告学、编辑出版学、网络与新媒体均与语言文学距离较近，意味着绝大部分新闻传播类的就业岗位同样适合于语言文学专业的毕业生，而这一点在业界早已是公认的普遍现象。而新闻传播专业中的广播电视学则与编导、动画、摄影、视觉传达等艺术学专业密切相关。此外，摄影、经济学类、心理学类、体育学类专业在就业市场中与新闻传播专业的关联度较大，计算机专业则与传播学在就业市场中的关联度较大。</p>
+            </div>
+        </article>
+    </section>
+    <script>
+        // using d3 for convenience
+        var main = d3.select("body");
+        var scrollo = d3.select("#scrollo");
+        var figure = scrollo.select("figure");
+        var article = scrollo.select("article");
+        var step = article.selectAll(".step");
+
+        // initialize the scrollama
+        var scroller = scrollama();
+
+        // generic window resize listener event
+        function handleResize() {
+            // 1. update height of step elements
+
+            var figureHeight = window.innerHeight;
+            var figureMarginTop = (window.innerHeight - figureHeight)/2;
+            step.style("height", figureHeight + "px");
+
+            figure
+                .style("height", figureHeight + "px")
+                .style("top", figureMarginTop + "px");
+
+            // 3. tell scrollama to update new element dimensions
+            scroller.resize();
+        }
+
+        // scrollama event handlers
+        function handleStepEnter(response) {
+            // response = { element, direction, index }
+
+            // add color to current step only
+            step.classed("is-active", function (d, i) {
+                return i === response.index;
+            });
+
+            const children = document.getElementById("co-occurrence").children;
+            for (let i = 0; i < children.length; i++) {
+                if (i === response.index) children[i].style.display = 'block';
+                else children[i].style.display = 'none';
+            }
+        }
+
+        function init() {
+
+            // 1. force a resize on load to ensure proper dimensions are sent to scrollama
+            handleResize();
+
+            // 2. setup the scroller passing options
+            // 		this will also initialize trigger observations
+            // 3. bind scrollama event handlers (this can be chained like below)
+            scroller
+                .setup({
+                    step: "#scrollo article .step",
+                    offset: 0.9,
+                    debug: false
+                })
+                .onStepEnter(handleStepEnter);
+        }
+
+        // kick things off
+        init();
+    </script>
 
     <div class="container">
         <div class="parts">
+        </div>
+    </div>
+
+    <section id="scrolld" class="scroll">
+        <figure id="demand">
             <p class="text-part">所以，在争取新闻传播的岗位时，科班出身的人才不仅需要和同专业的同学竞争，还要和其他专业的人才一起挤在新闻传播就业的这座独木桥上。除此之外，这种激烈的岗位竞争也存在于新闻与传播类专业内部的下级专业之间。
                 <span class="highlight">
                     新闻传播类专业内部，各专业之间的就业方向存在界限不明显的情况。
                 </span>
             </p>
-        </div>
-    </div>
+            <div class="bg-img" id="demand1"></div>
+            <div class="bg-img" id="demand2"></div>
+            <div class="bg-img" id="demand3"></div>
+            <div class="bg-img" id="demand4"></div>
+        </figure>
 
-    <div class="slide demand" style="background-image: url('img/demand1.png');">
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">从图中可以看出，新闻传播类的十个专业中，就业方向与其他专业区分度较大的仅有编辑出版学、网络与新媒体和播音主持与艺术三个专业，它们分别在编辑出版（46.07%）、运营（24.06%）和其他（35.43%）岗位占比较高。其中编辑出版和运营岗位都是和相应专业联系紧密的岗位。</p>
-        </div>
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">而新闻学、传播学、广告学三个专业，它们的就业范围相对来讲更加广泛，在市场、广告、编辑出版、运营、影视/媒体、公关/媒介等岗位占比都不低，但相应地，专业的就业去向均没有很强的针对性，且专业之间的就业区分度低。</p>
-        </div>
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">另外，广播电视学、广播电视编导、动画、摄影四个专业也存在就业区分度十分相似的情况。四个专业的主要去向均集中在影视/媒体岗位，竞争激烈。</p>
-        </div>
-        <div class="blank"></div>
-    </div>
+        <article>
+            <div class="step" data-step="1">
+            </div>
+            <div class="step" data-step="2">
+                <p class="text-part">从图中可以看出，新闻传播类的十个专业中，就业方向与其他专业区分度较大的仅有编辑出版学、网络与新媒体和播音主持与艺术三个专业，它们分别在编辑出版（46.07%）、运营（24.06%）和其他（35.43%）岗位占比较高。其中编辑出版和运营岗位都是和相应专业联系紧密的岗位。</p>
+            </div>
+            <div class="step" data-step="3">
+                <p class="text-part">而新闻学、传播学、广告学三个专业，它们的就业范围相对来讲更加广泛，在市场、广告、编辑出版、运营、影视/媒体、公关/媒介等岗位占比都不低，但相应地，专业的就业去向均没有很强的针对性，且专业之间的就业区分度低。</p>
+            </div>
+            <div class="step" data-step="4">
+                <p class="text-part">另外，广播电视学、广播电视编导、动画、摄影四个专业也存在就业区分度十分相似的情况。四个专业的主要去向均集中在影视/媒体岗位，竞争激烈。</p>
+            </div>
+        </article>
+    </section>
+    <script>
+        // using d3 for convenience
+        var main = d3.select("body");
+        var scrolld = d3.select("#scrolld");
+        var figure = scrolld.select("figure");
+        var article = scrolld.select("article");
+        var step = article.selectAll(".step");
+
+        // initialize the scrollama
+        var scroller = scrollama();
+
+        // generic window resize listener event
+        function handleResize() {
+            // 1. update height of step elements
+
+            var figureHeight = 600;
+            var figureMarginTop = (window.innerHeight - figureHeight)/2;
+            var stepH = figureHeight*0.8;
+            step.style("height", stepH + "px");
+
+            figure
+                .style("height", figureHeight + "px")
+                .style("top", figureMarginTop + "px");
+
+            // 3. tell scrollama to update new element dimensions
+            scroller.resize();
+        }
+
+        // scrollama event handlers
+        function handleStepEnter(response) {
+            // response = { element, direction, index }
+
+            // add color to current step only
+            step.classed("is-active", function (d, i) {
+                return i === response.index;
+            });
+
+            // update graphic based on step
+            const children = document.getElementById("demand").children;
+            for (let i = 1; i < children.length; i++) {
+                if (i === response.index) children[i].style.display = 'block';
+                else children[i].style.display = 'none';
+            }
+        }
+
+        function init() {
+
+            // 1. force a resize on load to ensure proper dimensions are sent to scrollama
+            handleResize();
+
+            // 2. setup the scroller passing options
+            // 		this will also initialize trigger observations
+            // 3. bind scrollama event handlers (this can be chained like below)
+            scroller
+                .setup({
+                    step: "#scrolld article .step",
+                    offset: 0.9,
+                    debug: false
+                })
+                .onStepEnter(handleStepEnter);
+        }
+
+        // kick things off
+        init();
+    </script>
 
     <div class="container">
         <div class="parts">
@@ -261,25 +400,94 @@
                 </span>借助“共现矩阵”的概念，我们计算任意两项技能共同出现的概率，探求不同技能之间的紧密程度和处于中心地位的技能。了解这些有助于让我们了解不同技能之间的联系，从而找到能够胜任更多岗位的应聘者最重要的优势点在哪里。</p>
         </div>
     </div>
-    <div class="slide market" style="background-image: url('img/market1.png');">
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">从图中我们可以看出，按照技能点的紧密程度，我们可以将它们分成外、中、内三层。其中，从外到内技能之间的连线也大都变得更粗，这说明越靠近中心的技能，其他技能对它的依赖就越强，并且它与其他技能的关系也更紧密，也就更核心。</p>
-        </div>
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">从不同的技能类型来看，市场营销、组织技能、学科知识和个人素养这四个适应型技能占据了内层技能的大部分，这与人们平时所认为的“‘硬实力’才是真本事”的观点恰恰相反，想要在新闻传播市场拥有竞争力，拥有较强的“软实力”才是核心。</p>
-        </div>
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">接着看到常规型技能的传统类技能，它们大部分位于中层区域，其中新闻报道、播音播报、编辑排版、新闻敏感、写作能力这5个位于中层的技能与核心的内层技能具有更紧密的关系。</p>
-        </div>
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">而常规型技能的创新类技能中，除内容策略位于内层核心位置，其他技能则更多位于外层，对应聘者来说更多地起到锦上添花的作用。</p>
-        </div>
-        <div class="blank"></div>
-    </div>
+
+    <section id="scrollm" class="scroll">
+        <figure id="market">
+            <img src="img/market1.png" alt="" class="fake">
+            <img src="img/market2.png" alt="" class="fake">
+            <img src="img/market3.png" alt="" class="fake">
+            <img src="img/market4.png" alt="" class="fake">
+        </figure>
+
+        <article>
+            <div class="step" data-step="1">
+                <p class="text-part">从图中我们可以看出，按照技能点的紧密程度，我们可以将它们分成外、中、内三层。其中，从外到内技能之间的连线也大都变得更粗，这说明越靠近中心的技能，其他技能对它的依赖就越强，并且它与其他技能的关系也更紧密，也就更核心。</p>
+            </div>
+            <div class="step" data-step="2">
+                <p class="text-part">从不同的技能类型来看，市场营销、组织技能、学科知识和个人素养这四个适应型技能占据了内层技能的大部分，这与人们平时所认为的“‘硬实力’才是真本事”的观点恰恰相反，想要在新闻传播市场拥有竞争力，拥有较强的“软实力”才是核心。</p>
+            </div>
+            <div class="step" data-step="3">
+                <p class="text-part">接着看到常规型技能的传统类技能，它们大部分位于中层区域，其中新闻报道、播音播报、编辑排版、新闻敏感、写作能力这5个位于中层的技能与核心的内层技能具有更紧密的关系。</p>
+            </div>
+            <div class="step" data-step="4">
+                <p class="text-part">而常规型技能的创新类技能中，除内容策略位于内层核心位置，其他技能则更多位于外层，对应聘者来说更多地起到锦上添花的作用。</p>
+            </div>
+        </article>
+    </section>
+    <script>
+        // using d3 for convenience
+        var main = d3.select("body");
+        var scrollm = d3.select("#scrollm");
+        var figure = scrollm.select("figure");
+        var article = scrollm.select("article");
+        var step = article.selectAll(".step");
+
+        // initialize the scrollama
+        var scroller = scrollama();
+
+        // generic window resize listener event
+        function handleResize() {
+            // 1. update height of step elements
+            var stepH = Math.floor(window.innerHeight);
+            step.style("height", stepH + "px");
+
+            var figureHeight = window.innerHeight;
+            var figureMarginTop = (window.innerHeight - figureHeight)/2;
+
+            figure
+                .style("height", figureHeight + "px")
+                .style("top", figureMarginTop + "px");
+
+            // 3. tell scrollama to update new element dimensions
+            scroller.resize();
+        }
+
+        // scrollama event handlers
+        function handleStepEnter(response) {
+            // response = { element, direction, index }
+
+            // add color to current step only
+            step.classed("is-active", function (d, i) {
+                return i === response.index;
+            });
+
+            // update graphic based on step
+            document.getElementById('market').style.backgroundImage = `url('img/market${response.index + 1}.png')`;
+        }
+
+        function init() {
+
+            // 1. force a resize on load to ensure proper dimensions are sent to scrollama
+            handleResize();
+
+            // 2. setup the scroller passing options
+            // 		this will also initialize trigger observations
+            // 3. bind scrollama event handlers (this can be chained like below)
+            scroller
+                .setup({
+                    step: "#scrollm article .step",
+                    offset: 0.9,
+                    debug: false
+                })
+                .onStepEnter(handleStepEnter);
+        }
+
+        // kick things off
+        init();
+    </script>
+
+
+
     <div class="container">
         <div class="parts">
             <p class="text-part">由此可见，新闻传播的招聘者需要具备以软实力为核心，贯通传统类技能，再将创新类技能为点缀的“复合型”技能结构，
@@ -287,29 +495,95 @@
             <p class="text-part">我们按照招聘类平台前程无忧官方给出的岗位分类标准整理出不同工作岗位对应的招聘广告，再根据招聘广告中的职位描述分别统计不同工作岗位的技能需求。由于在新闻传播学类的就业市场中，岗位工种的数量高达 72 个，我们选取岗位数量占比排名前 15 的工作岗位作为样本，呈现就业市场中不同工作岗位的技能需求。</p>
         </div>
     </div>
-    <div class="slide skill" style="background-image: url('img/skill1.png');">
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">从技能需求的角度出发，极少数的技能在不同工作岗位之间具有通用性，绝大部分技能则仅适用于部分特定的工作岗位。仅有个人素养这一适应型技能在 14 个工作岗位中是必须得掌握的技能，在唯一将其列为一般性技能的编辑出版中占比也高达 9.98% ，充分说明了这一技能的通用性。</p>
-        </div>
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">此外，即便是在就业市场中占比前三的内容策略和市场营销两项技能也不是所有工作岗位的必备技能，例如，教师对内容策略的技能需求仅为 4.23% ，属于最好能掌握的技能，而影视/媒体、行政/后勤、休闲娱乐、人力资源、教师等岗位对市场营销的技能需求均低于 5% 。考虑到不同技能需求层级的比例，还有写作能力和组织技能具有一定的岗位通用性。</p>
-        </div>
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">除了以上提及的五项技能，视觉设计、摄影摄像、产品管理、技术素养等9 项常规型技能和职业道德、学科知识、交际能力、关系管理等 6 项适应型技能在一些密切相关的工作岗位中需求层级较高，甚至非常突出，例如艺术/设计岗位对视觉设计这一技能的需求高达 29.27% ，销售人员和销售管理岗位对关系管理这一技能的需求分别为 13.82% 和 10.42% 。</p>
-        </div>
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">新闻敏感、抗压能力、外语能力等技能在任一岗位中的需求层级均较弱，其主要原因是在新闻传播类专业的就业市场中，由于招聘渠道的单一以及专业背景的限制等问题，包含这些技能的工作岗位数量略少且分布较散。</p>
-        </div>
-        <div class="blank"></div>
-        <div class="text-float">
-            <p class="text-part">从岗位需求的角度出发，几乎所有的工作岗位均要求应聘者“一专多能”，一半左右的工作岗位甚至要求“多专多能”。其中，岗位必备技能、一般技能的平均个数分别为 2.6 ，3.5 ，即新闻传播类专业的求职者要胜任某一工作岗位，至少需要熟练掌握 6.1 个技能，其中 2.6 个是必须得掌握的技能，且根据不同岗位职责最好掌握部分可选技能。</p>
-        </div>
-        <div class="blank"></div>
-    </div>
+
+    <section id="scrolls" class="scroll">
+        <figure id="skill">
+            <img src="img/skill1.png" alt="" class="fake">
+            <img src="img/skill2.png" alt="" class="fake">
+            <img src="img/skill3.png" alt="" class="fake">
+            <img src="img/skill4.png" alt="" class="fake">
+            <img src="img/skill5.png" alt="" class="fake">
+        </figure>
+
+        <article>
+            <div class="step" data-step="1">
+                <p class="text-part">从技能需求的角度出发，极少数的技能在不同工作岗位之间具有通用性，绝大部分技能则仅适用于部分特定的工作岗位。仅有个人素养这一适应型技能在 14 个工作岗位中是必须得掌握的技能，在唯一将其列为一般性技能的编辑出版中占比也高达 9.98% ，充分说明了这一技能的通用性。</p>
+            </div>
+            <div class="step" data-step="2">
+                <p class="text-part">此外，即便是在就业市场中占比前三的内容策略和市场营销两项技能也不是所有工作岗位的必备技能，例如，教师对内容策略的技能需求仅为 4.23% ，属于最好能掌握的技能，而影视/媒体、行政/后勤、休闲娱乐、人力资源、教师等岗位对市场营销的技能需求均低于 5% 。考虑到不同技能需求层级的比例，还有写作能力和组织技能具有一定的岗位通用性。</p>
+            </div>
+            <div class="step" data-step="3">
+                <p class="text-part">除了以上提及的五项技能，视觉设计、摄影摄像、产品管理、技术素养等9 项常规型技能和职业道德、学科知识、交际能力、关系管理等 6 项适应型技能在一些密切相关的工作岗位中需求层级较高，甚至非常突出，例如艺术/设计岗位对视觉设计这一技能的需求高达 29.27% ，销售人员和销售管理岗位对关系管理这一技能的需求分别为 13.82% 和 10.42% 。</p>
+            </div>
+            <div class="step" data-step="4">
+                <p class="text-part">新闻敏感、抗压能力、外语能力等技能在任一岗位中的需求层级均较弱，其主要原因是在新闻传播类专业的就业市场中，由于招聘渠道的单一以及专业背景的限制等问题，包含这些技能的工作岗位数量略少且分布较散。</p>
+            </div>
+            <div class="step" data-step="5">
+                <p class="text-part">从岗位需求的角度出发，几乎所有的工作岗位均要求应聘者“一专多能”，一半左右的工作岗位甚至要求“多专多能”。其中，岗位必备技能、一般技能的平均个数分别为 2.6 ，3.5 ，即新闻传播类专业的求职者要胜任某一工作岗位，至少需要熟练掌握 6.1 个技能，其中 2.6 个是必须得掌握的技能，且根据不同岗位职责最好掌握部分可选技能。</p>
+            </div>
+        </article>
+    </section>
+    <script>
+        // using d3 for convenience
+        var main = d3.select("body");
+        var scrolls = d3.select("#scrolls");
+        var figure = scrolls.select("figure");
+        var article = scrolls.select("article");
+        var step = article.selectAll(".step");
+
+        // initialize the scrollama
+        var scroller = scrollama();
+
+        // generic window resize listener event
+        function handleResize() {
+            // 1. update height of step elements
+            var stepH = Math.floor(window.innerHeight);
+            step.style("height", stepH + "px");
+
+            var figureHeight = window.innerHeight;
+            var figureMarginTop = (window.innerHeight - figureHeight)/2;
+
+            figure
+                .style("height", figureHeight + "px")
+                .style("top", figureMarginTop + "px");
+
+            // 3. tell scrollama to update new element dimensions
+            scroller.resize();
+        }
+
+        // scrollama event handlers
+        function handleStepEnter(response) {
+            // response = { element, direction, index }
+
+            // add color to current step only
+            step.classed("is-active", function (d, i) {
+                return i === response.index;
+            });
+
+            // update graphic based on step
+            document.getElementById('skill').style.backgroundImage = `url('img/skill${response.index + 1}.png')`;
+        }
+
+        function init() {
+
+            // 1. force a resize on load to ensure proper dimensions are sent to scrollama
+            handleResize();
+
+            // 2. setup the scroller passing options
+            // 		this will also initialize trigger observations
+            // 3. bind scrollama event handlers (this can be chained like below)
+            scroller
+                .setup({
+                    step: "#scrolls article .step",
+                    offset: 0.85,
+                    debug: false
+                })
+                .onStepEnter(handleStepEnter);
+        }
+
+        // kick things off
+        init();
+    </script>
     <div class="container">
         <div class="parts">
             <p class="text-part">由此可见，比起专才，目前新闻传播的就业市场更喜欢六边形战士，面对并没有降低反而是变得更高的就业门槛，其实也是对新闻传播教育提出了更高的要求。如何让新闻传播学子在本科学习中掌握核心技能，扩展技能体系，在日后步入职场时发挥出科班出身的优势。</p>
@@ -418,9 +692,9 @@
     <div class="copyright">
         © Copyright 2023 - All rights reserved.
     </div>
+    <script>
+        document.getElementById('progress-bar').style.width = '100%';
+        document.querySelector('#loading>p').innerHTML = '100%';
+    </script>
 </body>
 </html>
-<script>
-    document.getElementById('progress-bar').style.width = '100%';
-    document.querySelector('#loading>p').innerHTML = '100%';
-</script>

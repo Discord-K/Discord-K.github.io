@@ -28,5 +28,5 @@ function glimmer(){
         }else {
             status = 0;
         }
-    },500);
+    },150);
 }

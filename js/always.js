@@ -2,7 +2,7 @@
 document.onreadystatechange = function () {
     const body = document.body;
     const loading = document.getElementById('loading');
-    if (document.readyState == "complete") {
+    if (document.readyState === "complete") {
         setInterval(function (){
             const opacity = loading.style.opacity;
             loading.style.opacity = opacity - 0.1 + 'px';
@@ -14,6 +14,10 @@ document.onreadystatechange = function () {
 
 // 注释闪动
 window.onload = function (){
+    glimmer();
+}
+
+function glimmer(){
     const notice = document.getElementById('notice');
     let status = 1;
     const colors = ['#aaaaaa', '#888888', '#666666', '#444444', '#222222', '#444444', '#666666', '#888888']

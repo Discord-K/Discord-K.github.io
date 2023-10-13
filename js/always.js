@@ -9,8 +9,6 @@ document.onreadystatechange = function () {
         }, 100)
         loading.style.display = 'none';
         body.style.display = "block";
-    } else {
-        body.style.display = "none";
     }
 };
 

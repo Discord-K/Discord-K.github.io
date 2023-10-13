@@ -578,37 +578,11 @@ figure {
 #skill{
     background-image: url("../img/skill1.png");
 }
-.bg-img{
+#demand{
     background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    margin: 0;
-    height: 100%;
-    display: none;
-}
-
-.bg-img:first-child{
-    display: block;
-}
-#co-occurrence1{
-    background-image: url("../img/co-occurrence1.png");
-}
-#co-occurrence2{
-    background-image: url("../img/co-occurrence2.png");
-}
-#co-occurrence3{
-    background-image: url("../img/co-occurrence3.png");
-}
-
-#demand1{
     background-image: url("../img/demand1.png");
 }
-#demand2{
-    background-image: url("../img/demand2.png");
-}
-#demand3{
-    background-image: url("../img/demand3.png");
-}
-#demand4{
-    background-image: url("../img/demand4.png");
+#co-occurrence{
+    background-image: url("../img/co-occurrence1.png");
+    background-size: 75%;
 }

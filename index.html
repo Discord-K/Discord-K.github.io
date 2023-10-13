@@ -10,7 +10,7 @@
 <!--    如有logo-->
 <!--    <script src="js/ScrollMagic.min.js"></script>-->
     <script src="js/always.js"></script>
-    <script src="js/d3.min.js"></script>
+    <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
     <script src="js/scrollama.min.js"></script>
 </head>
 <body>
@@ -150,9 +150,9 @@
 
     <section id="scrollo" class="scroll">
         <figure id="co-occurrence">
-            <div id="co-occurrence1" class="bg-img"></div>
-            <div id="co-occurrence2" class="bg-img"></div>
-            <div id="co-occurrence3" class="bg-img"></div>
+            <img src="img/co-occurrence1.png" alt="" class="fake">
+            <img src="img/co-occurrence2.png" alt="" class="fake">
+            <img src="img/co-occurrence3.png" alt="" class="fake">
         </figure>
 
         <article>
@@ -203,11 +203,8 @@
                 return i === response.index;
             });
 
-            const children = document.getElementById("co-occurrence").children;
-            for (let i = 0; i < children.length; i++) {
-                if (i === response.index) children[i].style.display = 'block';
-                else children[i].style.display = 'none';
-            }
+            // update graphic based on step
+            document.getElementById('co-occurrence').style.backgroundImage = `url('img/co-occurrence${response.index + 1}.png')`;
         }
 
         function init() {
@@ -233,20 +230,20 @@
 
     <div class="container">
         <div class="parts">
-        </div>
-    </div>
-
-    <section id="scrolld" class="scroll">
-        <figure id="demand">
             <p class="text-part">所以，在争取新闻传播的岗位时，科班出身的人才不仅需要和同专业的同学竞争，还要和其他专业的人才一起挤在新闻传播就业的这座独木桥上。除此之外，这种激烈的岗位竞争也存在于新闻与传播类专业内部的下级专业之间。
                 <span class="highlight">
                     新闻传播类专业内部，各专业之间的就业方向存在界限不明显的情况。
                 </span>
             </p>
-            <div class="bg-img" id="demand1"></div>
-            <div class="bg-img" id="demand2"></div>
-            <div class="bg-img" id="demand3"></div>
-            <div class="bg-img" id="demand4"></div>
+        </div>
+    </div>
+
+    <section id="scrolld" class="scroll">
+        <figure id="demand">
+<!--            <div style="background-image: url('img/demand1.png')" class="fake"></div>-->
+<!--            <div style="background-image: url('img/demand2.png')" class="fake"></div>-->
+<!--            <div style="background-image: url('img/demand3.png')" class="fake"></div>-->
+<!--            <div style="background-image: url('img/demand4.png')" class="fake"></div>-->
         </figure>
 
         <article>
@@ -301,11 +298,7 @@
             });
 
             // update graphic based on step
-            const children = document.getElementById("demand").children;
-            for (let i = 1; i < children.length; i++) {
-                if (i === response.index) children[i].style.display = 'block';
-                else children[i].style.display = 'none';
-            }
+            document.getElementById('demand').style.backgroundImage = `url('img/demand${response.index + 1}.png')`;
         }
 
         function init() {

@@ -398,67 +398,8 @@ td>*{
     /*text-decoration: #6eacd3 underline;*/
 }
 
-.slide{
-    width: 100%;
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    overflow: auto;
-    margin: 0;
-    /*position: sticky;*/
-    top: 0;
-}
-
-.slide>.text-float{
-    background-color: rgba(255,255,255,0.8);
-    width: 50%;
-    margin: 0 auto;
-    padding: 12px 28px;
-    border-radius: 28px;
-}
-
-.text-float>.text-part{
-    font-size: 14px;
-    line-height: 24px;
-}
-
-.slide::-webkit-scrollbar {
-    width: 0;
-}
-
-.co-occurrence{
-    height: 900px;
-}
-.co-occurrence>.blank{
-    height: 900px;
-}
-
-.demand{
-    height: 500px;
-}
-.demand>.blank{
-    height: 500px;
-}
-
 .wordcloud-description p{
     margin: 54px 0;
-}
-
-.market{
-    height: 800px;
-}
-.market>.blank{
-    height: 800px;
-}
-
-.skill{
-    height: 850px;
-}
-/*.skill>.blank{*/
-/*    height: 600px;*/
-/*}*/
-.skill>.blank{
-    height: 850px;
 }
 
 .nav{
@@ -585,4 +526,29 @@ figure {
 #co-occurrence{
     background-image: url("../img/co-occurrence1.png");
     background-size: 75%;
+}
+
+.cyp p{
+    margin: 10px 0;
+}
+
+.moon{
+    display: inline-block;
+    background-image: url("../img/moon.svg");
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    padding-bottom: 6%;
+    margin: 0;
+}
+
+.star{
+    display: inline-block;
+    background-image: url("../img/star.svg");
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    padding-left: 5%;
+    padding-bottom: 5%;
+    margin: 0;
 }

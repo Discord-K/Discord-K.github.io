@@ -491,7 +491,7 @@ figure {
     transform: translate3d(0, 0, 0);
     /*background-color: #8a8a8a;*/
     z-index: 0;
-    background-size: 80%;
+    background-size: 85%;
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -518,6 +518,7 @@ figure {
 }
 #skill{
     background-image: url("../img/skill1.png");
+    background-size: 82%;
 }
 #demand{
     background-size: 100%;
@@ -525,7 +526,6 @@ figure {
 }
 #co-occurrence{
     background-image: url("../img/co-occurrence1.png");
-    background-size: 75%;
 }
 
 .cyp p{

@@ -3,12 +3,12 @@ document.onreadystatechange = function () {
     const body = document.body;
     const loading = document.getElementById('loading');
     if (document.readyState === "complete") {
-        setInterval(function (){
-            const opacity = loading.style.opacity;
-            loading.style.opacity = opacity - 0.1 + 'px';
-        }, 100)
-        loading.style.display = 'none';
-        body.style.display = "block";
+        document.getElementById('progress-bar').style.width = '100%';
+        document.querySelector('#loading>p').innerHTML = '100%';
+        setTimeout(function (){
+            loading.style.display = 'none';
+            body.style.display = "block";
+        }, 500)
     }
 };
 

@@ -552,3 +552,39 @@ figure {
     padding-bottom: 5%;
     margin: 0;
 }
+
+.pieBox{
+    height: 50vw;
+}
+
+#pieDiv>div{
+    display: flex;
+    flex-direction: column;
+
+
+}
+#interaction{
+    width: 46vw;
+    transform: translate(0, -100%);
+}
+
+#pie{
+    width: 100%;
+    z-index: 0;
+}
+
+#pieSvg{
+    z-index: 1;
+    transform: translateY(-100%);
+}
+
+.ability-description{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 40px;
+}
+.ability-description>*:last-child{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 40px;
+}

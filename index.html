@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/logo.svg">
 <!--    如有logo-->
-<!--    <script src="js/ScrollMagic.min.js"></script>-->
     <script src="js/always.js"></script>
     <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
     <script src="js/scrollama.min.js"></script>
@@ -240,6 +239,10 @@
 
     <section id="scrolld" class="scroll">
         <figure id="demand">
+            <img src="img/demand1.png" alt="" class="fake">
+            <img src="img/demand2.png" alt="" class="fake">
+            <img src="img/demand3.png" alt="" class="fake">
+            <img src="img/demand4.png" alt="" class="fake">
 <!--            <div style="background-image: url('img/demand1.png')" class="fake"></div>-->
 <!--            <div style="background-image: url('img/demand2.png')" class="fake"></div>-->
 <!--            <div style="background-image: url('img/demand3.png')" class="fake"></div>-->
@@ -360,16 +363,84 @@
             <p class="text-part">如下图所示，我们将新闻传播从业者的技能分为 2 个大类、 4 个中类和 31 个小类。
                 <span class="highlight">在技能大类层级，常规型技能和适应型技能分别体现“硬实力”，后者体现“软实力”，</span>从数据上看，两者在人才技能结构中的占比势均力敌，新闻传播类就业市场既强调从业者“硬核”的专业能力，同时也需要他们具备相当的个人素养。</p>
             <p class="text-part">在技能中类层级，传统类技能、创新类技能、个体类技能和交互类技能分别占比 13.32%、36.04%、32.68%、17.96%。</p>
-            <div class="twi-column twi-column82">
-                <div>
+            <div class="twi-column twi-column82 pieBox">
+                <div id="pieDiv">
                     <p class="caption" id="notice">▼ 鼠标悬停查看对应技能描述</p>
-                    <img src="img/pie.png" alt="就业市场中的人才技能结构需求" class="image" id="pie">
+                    <div>
+                        <img src="img/pie.png" alt="就业市场中的人才技能结构需求" class="image" id="pie">
+                    </div>
                 </div>
                 <div>
                     <p class="text-part">“硬实力”中的创新类技能在技能结构中的占比是传统类技能的近三倍，不可否认，传媒行业“采写编评”等“传统手艺”固然重要，但技术手段快速更迭，媒介形态日新月异，新闻传播的业态和招聘人才的需求也发生着深刻的变化；而在“软实力”中，个体类技能的需求近乎于交互类技能需求的两倍，因此，新闻传播人才除了需要拥有良好的沟通交流能力以外，更需强调自身的知识储备。</p>
                 </div>
             </div>
+<!--     鼠标悬停效果：覆盖一个一样大的图，色块全部设为透明       -->
+            <script>
+                const img=document.getElementById("pie")
+                const width = img.clientWidth
+                const outerR = 0.2875 * width
+                const innerR = 0.1925 * width
+                const svg = d3.select("#pieDiv").append("svg").attr("id", "pieSvg")
+                    .attr('width', width)
+                    .attr("height", width)
+                    .attr("fill", "#000000")
 
+                const arcPath = d3.arc()
+                    .innerRadius(innerR)
+                    .outerRadius(outerR);
+                console.log(arcPath)
+
+                async function drawPie(url) {
+                    const data = await d3.csv(url);
+                    const arcs = d3.pie().sort((a, b) => d3.ascending(parseInt(a.index), parseInt(b.index))).value((d) => parseFloat(d.percentage.split("%")[0])).startAngle(0)(data);
+
+                    svg.selectAll("path")
+                        .data(arcs)
+                        .enter()
+                        .append("path")
+                        .attr("d",function(d){
+                            return arcPath(d); })
+                        .attr("transform", `translate(${width/2}, ${width/2})`)
+                        .attr("fill", "rgba(0,0,0,0)")
+                        // .attr("stroke-width", '0.5px')
+                        // .attr("stroke", "white")
+                        // .attr("opacity", 0)
+                        .on("mouseover", function(d){
+                            d3.selectAll(".ability-decription").remove();
+                            const description = d.data.description;
+                            const index = d.data.index;
+                            let x = 0.1 * width;
+                            let color = "#48597f";
+                            if(index<20){
+                                x = 0.7 * width;
+                                color = "#c04440";
+                            }
+                            const g = svg.append("g")
+                                        .attr("id", `ability-description${index}`)
+                                        .attr("class", "ability-description");
+                            g.append("text")
+                            .text(description)
+                            .attr("text-anchor", "center")
+                            .attr("text-align", "center")
+                            .attr("x", x)
+                            .attr("y", 0.15*width)
+                            .transition()
+                            .duration(500)
+                            .attr("fill", color)
+                            g.append("text")
+                            .text(d.data.percentage)
+                            .attr("x", x)
+                            .attr("y", 0.15*width+20)
+                        })
+                        .on("mouseout", function (d){
+                            d3.select(`#ability-description${d.data.index}`)
+                                .attr("fill", "none")
+                                .remove();
+                        });
+                }
+
+                drawPie("data/tech-abilities.csv");
+            </script>
 
             <p class="text-part">创新类技能中的内容策略，个体类技能中的个人素养和交互类技能中的市场营销在人才技能结构中占比明显高于其他技能。我们分别将其所在的招聘语句进行了统计和呈现，将业界的技能期待具体化。</p>
 

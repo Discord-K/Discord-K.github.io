@@ -26,7 +26,8 @@ body{
 #loading-logo{
     position: fixed;
     padding: 1%;
-    width: 5%;
+    width: 5.2vw;
+    height: 5.2vw;
     border-radius: 50%;
     box-shadow: 0 3px 0 #243b6d;
     animation: round 1s infinite linear;
@@ -95,7 +96,7 @@ h1{
 }
 
 #cover{
-    opacity: 40%;
+    opacity: 100%;
     z-index: -1;
 }
 
@@ -491,7 +492,7 @@ figure {
     transform: translate3d(0, 0, 0);
     /*background-color: #8a8a8a;*/
     z-index: 0;
-    background-size: 85%;
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -518,10 +519,9 @@ figure {
 }
 #skill{
     background-image: url("../img/skill1.png");
-    background-size: 82%;
+    background-size: 95%;
 }
 #demand{
-    background-size: 100%;
     background-image: url("../img/demand1.png");
 }
 #co-occurrence{

@@ -134,7 +134,7 @@ h1{
     float: left;
 }
 .spot::first-letter{
-    margin-left: -20px;
+    margin-left: -32px;
 }
 
 img{
@@ -143,9 +143,9 @@ img{
 
 .caption{
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     color: #666666;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
 }
 
 .annotation{
@@ -512,6 +512,7 @@ figure {
     margin: 0 auto;
     padding: 20px 28px;
     border-radius: 28px;
+    font-size: 18px;
 }
 
 #market{
@@ -557,11 +558,23 @@ figure {
     height: 50vw;
 }
 
+#pieDiv{
+    margin: 0;
+    flex: 5;
+}
+
+#pieText{
+    font-size: 16px;
+    flex: 2;
+    margin: 0;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
 #pieDiv>div{
     display: flex;
     flex-direction: column;
-
-
 }
 #interaction{
     width: 46vw;
@@ -587,4 +600,8 @@ figure {
     font-size: 16px;
     font-weight: 400;
     line-height: 40px;
+}
+
+.parallelism{
+    margin-left: 40px;
 }

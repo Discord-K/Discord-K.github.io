@@ -123,13 +123,13 @@ h1{
 
 .text-part{
     text-align: justify;
-    font-size: 16px;
-    line-height: 28px;
+    font-size: 20px;
+    line-height: 32px;
     margin: 32px 0;
 }
 
 .drop-cap::first-letter{
-    font-size: 44px;
+    font-size: 60px;
     margin: 10px 10px 0 0;
     float: left;
 }
@@ -143,9 +143,9 @@ img{
 
 .caption{
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
     color: #666666;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .annotation{
@@ -301,7 +301,7 @@ img{
 /*}*/
 
 .emphasize{
-    font-size: 20px;
+    font-size: 24px;
     line-height: 40px;
     font-weight: 900;
     /*text-align: center;*/
@@ -339,7 +339,7 @@ td>*{
 
 .footer *{
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 40px;
     width: 100%;
 }
@@ -350,7 +350,7 @@ td>*{
 }
 
 .footer h3{
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .division{
@@ -444,14 +444,14 @@ td>*{
 .data{
     font-weight: 900;
     color: #c04440;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 /*文字强调*/
 .punchline{
     font-weight: 900;
     color: #4b6e98;
-    font-size: 18px;
+    font-size: 24px;
 }
 
 .highlight{

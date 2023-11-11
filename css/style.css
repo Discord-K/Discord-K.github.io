@@ -295,18 +295,6 @@ img{
     margin-right: 0;
 }
 
-/*.citing{*/
-/*    display: inline-block;*/
-/*    border-bottom: 4px blue solid;*/
-/*}*/
-
-.emphasize{
-    font-size: 24px;
-    line-height: 40px;
-    font-weight: 900;
-    /*text-align: center;*/
-}
-
 table{
     width: 100%;
 }
@@ -444,14 +432,34 @@ td>*{
 .data{
     font-weight: 900;
     color: #c04440;
-    font-size: 24px;
+    /*font-size: 24px;*/
 }
 
 /*文字强调*/
+.emphasize{
+    font-weight: 900;
+    color: #4b6e98;
+    /*font-size: 24px;*/
+}
+
+/*引用*/
+.citing{
+    text-decoration: underline #c04440 2px;
+    text-underline-offset: 4px;
+}
+
+/*原因*/
+.reason{
+    color: #4b6e98;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/*起首句*/
 .punchline{
     font-weight: 900;
     color: #4b6e98;
-    font-size: 24px;
+    /*font-size: 24px;*/
 }
 
 .highlight{
@@ -461,12 +469,12 @@ td>*{
 }
 
 .banner-gif{
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
 }
 
 .fake{
-    opacity: 0;
+    display: none;
 }
 
 /*滑动图层*/
@@ -504,15 +512,19 @@ figure {
 .step{
     width: 80%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .step p{
     background-color: rgba(255,255,255,0.8);
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px 28px;
+    width: 120%;
+    /*margin-left: -15%;*/
+    padding: 20px 40px;
     border-radius: 28px;
-    font-size: 18px;
+    font-size: 16px;
+    text-align: center;
 }
 
 #market{
@@ -546,11 +558,19 @@ figure {
 .star{
     display: inline-block;
     background-image: url("../img/star.svg");
-    background-size: 20%;
+    background-size: 18%;
     background-repeat: no-repeat;
     background-position: left bottom;
     padding-left: 5%;
     padding-bottom: 5%;
+    margin: 0;
+}
+
+.sun{
+    background-image: url("../img/sun.svg");
+    background-size: 9%;
+    background-repeat: no-repeat;
+    background-position: right bottom;
     margin: 0;
 }
 
@@ -603,5 +623,6 @@ figure {
 }
 
 .parallelism{
-    margin-left: 40px;
+    font-weight: 700;
+    margin: 0 0 16px 40px;
 }

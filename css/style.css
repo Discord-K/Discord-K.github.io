@@ -434,38 +434,46 @@ td>*{
     color: #c04440;
     /*font-size: 24px;*/
 }
+.data::before{
+    content: " ";
+}
+.data.no-stop::before{
+    content: none;
+}
+.data::after{
+    content: " ";
+}
 
 /*文字强调*/
-.emphasize{
-    font-weight: 900;
-    color: #4b6e98;
-    /*font-size: 24px;*/
-}
+/*.emphasize{*/
+/*    font-weight: 900;*/
+/*    color: #4b6e98;*/
+/*    !*font-size: 24px;*!*/
+/*}*/
 
 /*引用*/
-.citing{
-    text-decoration: underline #c04440 2px;
-    text-underline-offset: 4px;
-}
+/*.citing{*/
+/*    text-decoration: underline #c04440 2px;*/
+/*    text-underline-offset: 4px;*/
+/*}*/
 
 /*原因*/
-.reason{
-    color: #4b6e98;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-}
-
-/*起首句*/
-.punchline{
-    font-weight: 900;
-    color: #4b6e98;
-    /*font-size: 24px;*/
-}
+/*.reason{*/
+/*    color: #4b6e98;*/
+/*    text-decoration: underline;*/
+/*    text-underline-offset: 4px;*/
+/*}*/
 
 .highlight{
     background-color: #9ad3f1;
     color: #000;
     line-height: 16px;
+}
+
+.step .highlight{
+    background: none;
+    color: #333333;
+    line-height: 32px;
 }
 
 .banner-gif{
@@ -568,7 +576,7 @@ figure {
 
 .sun{
     background-image: url("../img/sun.svg");
-    background-size: 9%;
+    background-size: 15%;
     background-repeat: no-repeat;
     background-position: right bottom;
     margin: 0;
@@ -620,9 +628,4 @@ figure {
     font-size: 16px;
     font-weight: 400;
     line-height: 40px;
-}
-
-.parallelism{
-    font-weight: 700;
-    margin: 0 0 16px 40px;
 }

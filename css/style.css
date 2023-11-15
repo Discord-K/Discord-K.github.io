@@ -133,7 +133,7 @@ h1{
     float: left;
 }
 .spot::first-letter{
-    margin-left: -32px;
+    margin-left: -0.5em;
 }
 
 img{
@@ -453,6 +453,10 @@ td>*{
 /*引号*/
 .citing{
     font-weight: 900;
+}
+.citing-content{
+    color: #666666;
+    font-style: italic;
 }
 
 /*原因*/
